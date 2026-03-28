@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - YNK Consulting</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232B59C3'/><text x='50' y='72' font-family='Arial' font-size='65' font-weight='bold' fill='white' text-anchor='middle'>Y</text></svg>"
+        type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .services-details {
+            padding: 8rem 2rem;
+            background-color: var(--white);
+        }
+
+        .details-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+
+        .service-content-block {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .service-header-box {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .service-header-box i {
+            font-size: 2.5rem;
+        }
+
+        .service-header-box h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+            text-align: left;
+            color: var(--text-dark);
+        }
+
+        .service-body-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .service-body-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-body-content ul li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-body-content ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.8rem;
+            top: -4px;
+        }
+
+        .service-body-content ul.sub-list {
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-body-content ul.sub-list li {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            padding-left: 1.5rem;
+        }
+
+        .service-body-content ul.sub-list li::before {
+            content: "-";
+            font-size: 1.4rem;
+        }
+
+        .service-kr-note-clean {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #e2e8f0;
+        }
+
+        @media (max-width: 992px) {
+            .image-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-service-card {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .image-service-card {
+                flex-direction: column;
+                height: 450px;
+            }
+
+            .card-color-side,
+            .card-image-side {
+                flex: auto;
+                height: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">YNK Consulting</a>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="qna.html">Q&A</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding-top: 70px;">
+        <!-- Banner Section -->
+        <section class="services-hero-banner">
+            <div class="services-hero-overlay"></div>
+            <div class="services-hero-content" data-aos="fade-up">
+                <h1>Our Services</h1>
+                <p>YNK provides comprehensive and flexible services by offering full range of services and tailored
+                    contract to each client based on service duration and scope of work.<br>We apply our expertise and
+                    experience to deliver specific needs.</p>
+            </div>
+        </section>
+
+        <!-- Detailed Services List (Box-Free) -->
+        <section class="services-details">
+            <div class="details-container">
+
+                <!-- Nonclinical Services -->
+                <div id="nonclinical" class="service-content-block" data-aos="fade-up">
+                    <div class="service-header-box">
+                        <i class="fas fa-microscope"></i>
+                        <h2>Nonclinical Services</h2>
+                    </div>
+                    <div class="service-body-content">
+                        <ul>
+                            <li>Project analysis and management</li>
+                            <li>Study items, project schedule and budget analysis</li>
+                            <li>Study design proposal complying ICH guidelines</li>
+                            <li>Protocol and report review and preparation</li>
+                            <li>Study monitoring and audit plan/execution</li>
+                            <li>PK simulation and dose level justification</li>
+                            <li>Clinical stage-dependent nonclinical program design</li>
+                        </ul>
+                        <p class="service-kr-note-clean">* 독성 시험 및 PK/PD 설계 등 성공적인 비임상 개발을 지원합니다.</p>
+                    </div>
+                </div>
+
+                <!-- Clinical Services -->
+                <div id="clinical" class="service-content-block" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-header-box">
+                        <i class="fas fa-stethoscope"></i>
+                        <h2>Clinical Services</h2>
+                    </div>
+                    <div class="service-body-content">
+                        <ul>
+                            <li><strong>Strategy Consulting</strong>
+                                <ul class="sub-list">
+                                    <li>Clinical study strategy for fastest approval, justification of indication</li>
+                                    <li>IND submission or approval</li>
+                                    <li>Functional support, including regulatory advice and quality audit</li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 1.5rem;"><strong>Clinical Development and Operation</strong>
+                                <ul class="sub-list">
+                                    <li>CRO/Country selection</li>
+                                    <li>Stepwise services for IND/NDA approval, indication extension</li>
+                                    <li>Insourced cPM</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="service-kr-note-clean">* 성공적인 국내외 임상 진입 전략 수립 및 파트너십을 관리합니다.</p>
+                    </div>
+                </div>
+
+                <!-- CMC Services -->
+                <div id="cmc" class="service-content-block" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-header-box">
+                        <i class="fas fa-industry"></i>
+                        <h2>CMC Services</h2>
+                    </div>
+                    <div class="service-body-content">
+                        <ul>
+                            <li><strong>Supplier Review</strong></li>
+                            <li><strong>Product Characterization and QbD:</strong> TPP, QTPP, CQA determination</li>
+                            <li style="margin-top: 2rem;"><strong>Formulation Development and Stability:</strong>
+                                <ul class="sub-list">
+                                    <li>Pre- and final formulation, container closure system, stability with storage
+                                        condition</li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 2rem;"><strong>USP/DSP Development and Scale Up:</strong>
+                                <ul class="sub-list">
+                                    <li>Risk assessment, process validation, analytical method validation,
+                                        comparability, release and stability data, document review and writing</li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 2rem;"><strong>CRDMO Management:</strong> CRO, CMO evaluation,
+                                monitoring, GxP compliance</li>
+                            <li><strong>Process Life Cycle Management</strong></li>
+                            <li style="margin-top: 2rem;"><strong>Cell Line Establishment and Characterization for
+                                    Protein, cell/gene therapeutics:</strong>
+                                <ul class="sub-list">
+                                    <li>Cloning, expression vector, host cell, MCB, WCB, cell bank stability</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="service-kr-note-clean">* 최적의 제조 공정 개발 및 글로벌 수준의 품질 관리 체계를 구축합니다.</p>
+                    </div>
+                </div>
+
+                <!-- Common Services -->
+                <div id="common" class="service-content-block" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-header-box">
+                        <i class="fas fa-handshake"></i>
+                        <h2>Common Services</h2>
+                    </div>
+                    <div class="service-body-content">
+                        <ul>
+                            <li>Due Diligence Support</li>
+                            <li>Gap Analysis and Closing Plan</li>
+                            <li>Documents/Raw Data Review and Evaluation</li>
+                            <li>Pipeline Evaluation</li>
+                            <li style="margin-top: 2rem;"><strong>Regulatory Affairs</strong>
+                                <ul class="sub-list">
+                                    <li>Submission and Approval of IND/NDA</li>
+                                    <li>Respond to Regulatory Agencies</li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 2rem;"><strong>Search CRO/CMO:</strong> Evaluation, Selection and
+                                Price Negotiation</li>
+                            <li style="margin-top: 2rem;"><strong>Contract and Budget Review:</strong> Risk and Hidden
+                                Cost Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Bottom Service Cards -->
+        <section class="services-summary-section">
+            <div class="section-subtitle" data-aos="fade-up" style="margin-bottom: 4rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Service Summary</h2>
+                <p style="font-size: 1.1rem; color: var(--text-light);">Overview of our core competencies</p>
+            </div>
+            <div class="services-grid">
+                <!-- Nonclinical -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100"
+                    style="text-align: center; border-radius: 12px; display: flex; flex-direction: column;">
+                    <i class="fas fa-microscope stat-icon" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
+                    <h3 style="border: none; padding-bottom: 0; margin-bottom: 1rem; font-size: 1.4rem;">Nonclinical
+                        Strategy</h3>
+                    <p style="margin-top: auto;">Supporting successful preclinical development</p>
+                </div>
+                <!-- Clinical -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200"
+                    style="text-align: center; border-radius: 12px; display: flex; flex-direction: column;">
+                    <i class="fas fa-stethoscope stat-icon" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
+                    <h3 style="border: none; padding-bottom: 0; margin-bottom: 1rem; font-size: 1.4rem;">Clinical
+                        Development</h3>
+                    <p style="margin-top: auto;">Formulating entry strategies & management</p>
+                </div>
+                <!-- CMC -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300"
+                    style="text-align: center; border-radius: 12px; display: flex; flex-direction: column;">
+                    <i class="fas fa-industry stat-icon" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
+                    <h3 style="border: none; padding-bottom: 0; margin-bottom: 1rem; font-size: 1.4rem;">CMC & Quality
+                    </h3>
+                    <p style="margin-top: auto;">Optimizing manufacturing processes and QA/QC</p>
+                </div>
+                <!-- RA -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400"
+                    style="text-align: center; border-radius: 12px; display: flex; flex-direction: column;">
+                    <i class="fas fa-file-signature stat-icon" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
+                    <h3 style="border: none; padding-bottom: 0; margin-bottom: 1rem; font-size: 1.4rem;">Regulatory
+                        Affairs</h3>
+                    <p style="margin-top: auto;">Regulatory response strategies & consulting</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="contact-container fade-in-section">
+                <div class="contact-info">
+                    <h3>Let’s Strategize Together</h3>
+                    <p>Contact us for expert guidance tailored to your specific needs.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <a href="mailto:wskoh@ynk-consulting.co.kr" style="color: white; text-decoration: none;"><i
+                                    class="fas fa-envelope"></i></a>
+                            <p><a href="mailto:wskoh@ynk-consulting.co.kr"
+                                    style="color: white; text-decoration: underline;">wskoh@ynk-consulting.co.kr</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm"
+                        onsubmit="event.preventDefault(); window.location.href='mailto:wskoh@ynk-consulting.co.kr';">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Company / Affiliation (Optional)">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control"
+                                placeholder="Please describe your inquiry or project details (e.g., goals, timeline, etc.)"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-navy" style="width: 100%;">Submit</button>
+                        <p style="text-align: center; margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;"
+                            id="submitMsg"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy;
+                <script>document.write(new Date().getFullYear())</script> YNK Consulting. All rights reserved.
+            </p>
+            <p
+                style="font-size: 0.8rem; color: #ffffff; margin-top: 0.8rem; opacity: 0.9; font-weight: 300; line-height: 1.6;">
+                대전광역시 유성구 테크노2로 206, 2층 251호(용산동)<br>
+                #251, 2F, 206, Techno 2-ro, Yuseong-gu, Daejeon, Republic of Korea<br>
+                <span style="font-weight: 500;">Email: wskoh@ynk-consulting.co.kr</span>
+            </p>
+        </footer>
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="script.js"></script>
+</body>
+
+</html>

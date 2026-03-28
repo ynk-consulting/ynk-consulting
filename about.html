@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - YNK Consulting</title>
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232B59C3'/><text x='50' y='72' font-family='Arial' font-size='65' font-weight='bold' fill='white' text-anchor='middle'>Y</text></svg>"
+        type="image/svg+xml">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-section {
+            padding: 8rem 2rem;
+            background-color: var(--white);
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-text-center {
+            text-align: center;
+        }
+
+        .section-desc {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-weight: 400;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-flex-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .about-content-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-content-block .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            color: #4a7ba5;
+            /* Steel Blue for icons */
+        }
+
+        .about-content-block .icon-title i {
+            font-size: 2rem;
+        }
+
+        .about-content-block h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+            text-align: left;
+            color: var(--text-dark);
+        }
+
+        .about-body {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        .about-body ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .about-body ul li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .about-body ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a7ba5;
+            font-weight: bold;
+            font-size: 1.6rem;
+            top: -3px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">YNK Consulting</a>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="qna.html">Q&A</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding-top: 70px;">
+        <!-- Hero Section -->
+        <section class="services-hero-banner" style="height: 40vh; min-height: 350px;">
+            <div class="services-hero-overlay"></div>
+            <div class="services-hero-content" data-aos="fade-up">
+                <h1
+                    style="color: #ffffff; font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 700; margin: 0; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);">
+                    About
+                </h1>
+            </div>
+        </section>
+
+        <!-- Introduction Section (Box-Free) -->
+        <section class="about-section about-text-center">
+            <div class="about-container fade-in-section">
+                <p class="section-desc">
+                    Y&K Consulting is a comprehensive consulting company that advises the entire process of drug
+                    development from screening to marketing strategies.<br><br>
+                    With our expertise and experience in non-clinical, clinical, and quality assurance are committed to
+                    providing advice on new drug development. We also provide recruiting and training services, patent
+                    and legal advice, and investment. We provide consultation and advisory services for all areas of
+                    biological products from new drugs to generic and medical devices.<br><br>
+                    Y&K can help you make your drug development process safe and successful.
+                </p>
+            </div>
+        </section>
+
+        <!-- Our Vision Section (Steel Blue Refined) -->
+        <section style="padding: 6.5rem 2rem; background-color: #5fa1d0; color: var(--white);">
+            <div class="fade-in-section" style="max-width: 750px; margin: 0 auto; text-align: center;">
+                <h2 class="vision-underline"
+                    style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2.5rem; color: var(--white);">Our Vision
+                </h2>
+
+                <ul
+                    style="list-style-type: none; padding: 0; margin: 0; font-size: 1.25rem; line-height: 1.8; text-align: left;">
+                    <li
+                        style="position: relative; padding-left: 2.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <span
+                            style="position: absolute; left: 0; top: 5px; font-size: 1.5rem; font-weight: bold; color: var(--white);">•</span>
+                        <strong>The first comprehensive consulting firm for drug development in Korea:</strong>
+                        <span style="opacity: 0.9; font-weight: 300;">From screening to marketing and more</span>
+                    </li>
+                    <li
+                        style="position: relative; padding-left: 2.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <span
+                            style="position: absolute; left: 0; top: 5px; font-size: 1.5rem; font-weight: bold; color: var(--white);">•</span>
+                        <strong>The partner with all the resources clients need:</strong>
+                        <span style="opacity: 0.9; font-weight: 300;">Planning, Execution, Staffing, Training,
+                            Partnering, IP, Legal and Investment</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Core Value Blocks (Box-Free Restoration) -->
+        <section class="about-section">
+            <div class="about-container about-flex-list">
+
+                <!-- Our Mission -->
+                <div class="about-content-block" data-aos="fade-up">
+                    <div class="icon-title">
+                        <i class="fas fa-bullseye"></i>
+                        <h2>Our Mission</h2>
+                    </div>
+                    <div class="about-body">
+                        <p
+                            style="font-weight: 500; font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--text-dark);">
+                            "신약 개발의 복잡한 여정을 전문적인 지식과 네트워크로 단축시키고, 성공적인 시장 진입을 돕습니다."
+                        </p>
+                        <ul>
+                            <li>Expertise in full drug development cycle</li>
+                            <li>Efficient process for shortened development periods</li>
+                            <li>Trusted partnership prioritizing client success</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Our Expertise -->
+                <div class="about-content-block" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-title">
+                        <i class="fas fa-microscope"></i>
+                        <h2>Our Expertise</h2>
+                    </div>
+                    <div class="about-body">
+                        <ul>
+                            <li><strong>Non-clinical:</strong> Toxicity study, PK/PD analysis, and strategic development
+                                guide</li>
+                            <li><strong>Clinical:</strong> Strategy formulation, IND/NDA support, and CRO management
+                            </li>
+                            <li><strong>Quality Assurance (CMC):</strong> Process development, QA/QC system
+                                establishment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Our Commitment -->
+                <div class="about-content-block" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-title">
+                        <i class="fas fa-handshake"></i>
+                        <h2>Our Commitment</h2>
+                    </div>
+                    <div class="about-body">
+                        <p>
+                            Your success is our priority. We commit to delivering precise guidance tailored to your
+                            specific organizational needs, empowering your journey from discovery to market.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="contact-container fade-in-section">
+                <div class="contact-info">
+                    <h3>Let’s Strategize Together</h3>
+                    <p>Contact us for expert guidance tailored to your specific needs.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <a href="mailto:wskoh@ynk-consulting.co.kr" style="color: white; text-decoration: none;"><i
+                                    class="fas fa-envelope"></i></a>
+                            <p><a href="mailto:wskoh@ynk-consulting.co.kr"
+                                    style="color: white; text-decoration: underline;">wskoh@ynk-consulting.co.kr</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm"
+                        onsubmit="event.preventDefault(); window.location.href='mailto:wskoh@ynk-consulting.co.kr';">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Company / Affiliation (Optional)">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control"
+                                placeholder="Please describe your inquiry or project details (e.g., goals, timeline, etc.)"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-navy" style="width: 100%;">Submit</button>
+                        <p style="text-align: center; margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;"
+                            id="submitMsg"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy;
+                <script>document.write(new Date().getFullYear())</script> YNK Consulting. All rights reserved.
+            </p>
+            <p
+                style="font-size: 0.8rem; color: #ffffff; margin-top: 0.8rem; opacity: 0.9; font-weight: 300; line-height: 1.6;">
+                대전광역시 유성구 테크노2로 206, 2층 251호(용산동)<br>
+                #251, 2F, 206, Techno 2-ro, Yuseong-gu, Daejeon, Republic of Korea<br>
+                <span style="font-weight: 500;">Email: wskoh@ynk-consulting.co.kr</span>
+            </p>
+        </footer>
+
+        <!-- Custom JS -->
+        <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - YNK Consulting</title>
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232B59C3'/><text x='50' y='72' font-family='Arial' font-size='65' font-weight='bold' fill='white' text-anchor='middle'>Y</text></svg>"
+        type="image/svg+xml">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">YNK Consulting</a>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="qna.html">Q&A</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding-top: 70px;">
+        <!-- Hero Section -->
+        <section class="hero" style="height: 40vh; min-height: 350px;">
+            <div class="hero-content">
+                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 0;">Contact Us</h1>
+            </div>
+        </section>
+
+        <!-- Contact Content Section -->
+        <section class="contact" style="padding: 6rem 2rem; background-color: var(--white);">
+            <div class="contact-container fade-in-section">
+
+                <!-- Info Side -->
+                <div class="contact-info">
+                    <h3>Let’s Strategize Together</h3>
+                    <p>Contact us for expert guidance tailored to your specific needs.</p>
+                </div>
+
+                <!-- Main Content (Form) -->
+                <div class="contact-form">
+                    <form id="contactForm"
+                        onsubmit="event.preventDefault(); window.location.href='mailto:wskoh@ynk-consulting.co.kr';">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name"
+                                style="border: 1px solid #cbd5e0;" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email"
+                                style="border: 1px solid #cbd5e0;" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Company / Affiliation (Optional)"
+                                style="border: 1px solid #cbd5e0;">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control"
+                                placeholder="Please describe your inquiry or project details (e.g., goals, timeline, etc.)"
+                                style="border: 1px solid #cbd5e0; min-height: 150px;" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-navy"
+                            style="width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: 8px;">Send
+                            Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy;
+            <script>document.write(new Date().getFullYear())</script> YNK Consulting. All rights reserved.
+        </p>
+        <p
+            style="font-size: 0.8rem; color: #ffffff; margin-top: 0.8rem; opacity: 0.9; font-weight: 300; line-height: 1.6;">
+            대전광역시 유성구 테크노2로 206, 2층 251호(용산동)<br>
+            #251, 2F, 206, Techno 2-ro, Yuseong-gu, Daejeon, Republic of Korea<br>
+            <span style="font-weight: 500;">Email: wskoh@ynk-consulting.co.kr</span>
+        </p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

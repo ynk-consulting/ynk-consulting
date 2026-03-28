@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A - YNK Consulting</title>
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232B59C3'/><text x='50' y='72' font-family='Arial' font-size='65' font-weight='bold' fill='white' text-anchor='middle'>Y</text></svg>"
+        type="image/svg+xml">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .qna-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Card styles removed to blend into background */
+        }
+
+        .qna-section-title {
+            font-size: 2rem;
+            color: var(--navy-brand);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 2px solid var(--navy-brand);
+            padding-bottom: 1rem;
+        }
+
+        .approval-notice {
+            background-color: rgba(0, 35, 102, 0.03);
+            /* Very light navy tone */
+            padding: 1.5rem 2rem;
+            border-left: 4px solid var(--navy-brand);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* --- Table View Styles --- */
+        .qna-table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+
+        .qna-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 1.05rem;
+        }
+
+        .qna-table th {
+            background-color: var(--navy-brand);
+            color: var(--white);
+            font-weight: 600;
+            padding: 1rem;
+            white-space: nowrap;
+            border-top: 2px solid var(--navy-brand);
+            border-bottom: 2px solid var(--navy-brand);
+        }
+
+        .qna-table td {
+            padding: 1.2rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: var(--text-dark);
+            vertical-align: middle;
+        }
+
+        .qna-table tbody tr {
+            transition: background-color 0.2s;
+        }
+
+        .qna-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .col-no {
+            width: 5%;
+        }
+
+        .col-type {
+            width: 15%;
+            color: var(--text-light);
+        }
+
+        .col-title {
+            width: 40%;
+            text-align: left;
+        }
+
+        .col-author {
+            width: 15%;
+        }
+
+        .col-date {
+            width: 15%;
+            color: var(--text-light);
+        }
+
+        .col-status {
+            width: 10%;
+        }
+
+        .item-title-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .item-title-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .icon-lock {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-answered {
+            background-color: #e6ffed;
+            color: #1a7f37;
+            border: 1px solid #d1e5d7;
+        }
+
+        .badge-waiting {
+            background-color: #f6f8fa;
+            color: #57606a;
+            border: 1px solid #d0d7de;
+        }
+
+        /* --- Footer & Pagination --- */
+        .qna-board-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.2s;
+            background: var(--white);
+        }
+
+        .page-link:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e0;
+        }
+
+        .page-link.active {
+            background-color: var(--navy-brand);
+            color: var(--white);
+            border-color: var(--navy-brand);
+        }
+
+        .btn-register {
+            background-color: var(--navy-brand);
+            color: var(--white);
+            padding: 0.8rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-register:hover {
+            background-color: #001a4d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 35, 102, 0.2);
+        }
+
+        /* --- Write View Styles (Full Width) --- */
+        #qna-write-view {
+            display: none;
+        }
+
+        .write-form-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .write-form-container .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .write-form-container .form-control {
+            border: 1px solid #cbd5e0;
+            padding: 1.2rem;
+            font-size: 1.05rem;
+            border-radius: 6px;
+            background-color: #f8fafc;
+        }
+
+        .write-form-container .form-control:focus {
+            background-color: var(--white);
+            border-color: var(--navy-brand);
+            box-shadow: 0 0 0 3px rgba(0, 35, 102, 0.1);
+        }
+
+        .write-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--navy-brand);
+            font-size: 1.1rem;
+        }
+
+        .write-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn-cancel {
+            background-color: var(--white);
+            color: var(--text-dark);
+            border: 1px solid #cbd5e0;
+            padding: 0.8rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-cancel:hover {
+            background-color: #f8fafc;
+            border-color: #a0aec0;
+        }
+
+        .btn-submit {
+            background-color: var(--navy-brand);
+            color: var(--white);
+            padding: 0.8rem 3rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-submit:hover {
+            background-color: #001a4d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 35, 102, 0.2);
+        }
+
+        .checkbox-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            padding: 1rem 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--navy-brand);
+            cursor: pointer;
+        }
+
+        .recaptcha-placeholder {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 400px;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .qna-wrapper {
+                padding: 1.5rem;
+            }
+
+            .qna-board-footer {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .btn-register {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .write-actions {
+                flex-direction: column;
+            }
+
+            .btn-cancel,
+            .btn-submit {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">YNK Consulting</a>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="qna.html">Q&A</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding-top: 70px;">
+        <!-- Hero Section -->
+        <section class="hero" style="height: 40vh; min-height: 350px;">
+            <div class="hero-content">
+                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 0;">Q&A</h1>
+            </div>
+        </section>
+
+        <section style="padding: 5rem 2rem; background-color: var(--background-light);">
+            <div class="qna-wrapper fade-in-section">
+
+                <!-- ================= LIST VIEW ================= -->
+                <div id="qna-board-view">
+                    <h2 class="qna-section-title">Q&A Board</h2>
+
+                    <div class="approval-notice">
+                        <i class="fas fa-info-circle"
+                            style="font-size: 1.4rem; color: var(--navy-brand); margin-top: 0.1rem;"></i>
+                        <div>
+                            <strong>Approval System Active</strong><br>
+                            All submissions undergo an administrative review. Only approved inquiries will be publicly
+                            visible. Replies are strictly provided by YNK Consulting administrators.
+                        </div>
+                    </div>
+
+                    <div class="qna-table-container">
+                        <table class="qna-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-no">No</th>
+                                    <th class="col-type">Type</th>
+                                    <th class="col-title">Title</th>
+                                    <th class="col-author">Author</th>
+                                    <th class="col-date">Date</th>
+                                    <th class="col-status">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Item 1: Answered (Public) -->
+                                <tr>
+                                    <td>10</td>
+                                    <td>Clinical</td>
+                                    <td>
+                                        <a href="#" class="item-title-link"
+                                            onclick="alert('Viewing public question details is under construction.')">
+                                            Inquiry about Clinical Strategy Consulting Timeline
+                                        </a>
+                                    </td>
+                                    <td>Emily R.</td>
+                                    <td>2026-03-15</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
+                                </tr>
+
+                                <!-- Item 2: Waiting (Private) -->
+                                <tr>
+                                    <td>9</td>
+                                    <td>CMC</td>
+                                    <td>
+                                        <a href="#" class="item-title-link" onclick="promptPassword(event)">
+                                            Requesting details on formulation development <i
+                                                class="fas fa-lock icon-lock"></i>
+                                        </a>
+                                    </td>
+                                    <td>J. Smith</td>
+                                    <td>2026-03-14</td>
+                                    <td><span class="status-badge badge-waiting">Waiting</span></td>
+                                </tr>
+
+                                <!-- Item 3: Answered (Private) -->
+                                <tr>
+                                    <td>8</td>
+                                    <td>Nonclinical</td>
+                                    <td>
+                                        <a href="#" class="item-title-link" onclick="promptPassword(event)">
+                                            PK simulation and dose level justification service <i
+                                                class="fas fa-lock icon-lock"></i>
+                                        </a>
+                                    </td>
+                                    <td>M*** P.</td>
+                                    <td>2026-03-12</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
+                                </tr>
+
+                                <!-- Item 4: Waiting (Public) -->
+                                <tr>
+                                    <td>7</td>
+                                    <td>Regulatory</td>
+                                    <td>
+                                        <a href="#" class="item-title-link"
+                                            onclick="alert('Viewing public question details is under construction.')">
+                                            IND Submission Requirements
+                                        </a>
+                                    </td>
+                                    <td>David K.</td>
+                                    <td>2026-03-10</td>
+                                    <td><span class="status-badge badge-waiting">Waiting</span></td>
+                                </tr>
+
+                                <!-- Mock Items for Pagination Testing -->
+                                <tr>
+                                    <td>6</td>
+                                    <td>Clinical</td>
+                                    <td><a href="#" class="item-title-link"
+                                            onclick="alert('Viewing public question details is under construction.')">CRO
+                                            Selection Criteria</a></td>
+                                    <td>Alice B.</td>
+                                    <td>2026-03-08</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>CMC</td>
+                                    <td><a href="#" class="item-title-link" onclick="promptPassword(event)">Cell Line
+                                            Establishment <i class="fas fa-lock icon-lock"></i></a></td>
+                                    <td>P*** T.</td>
+                                    <td>2026-03-05</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Other</td>
+                                    <td><a href="#" class="item-title-link"
+                                            onclick="alert('Viewing public question details is under construction.')">General
+                                            capability inquiry</a></td>
+                                    <td>Kim S.</td>
+                                    <td>2026-03-01</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Regulatory</td>
+                                    <td><a href="#" class="item-title-link" onclick="promptPassword(event)">Gap Analysis
+                                            Timeline <i class="fas fa-lock icon-lock"></i></a></td>
+                                    <td>L*** K.</td>
+                                    <td>2026-02-25</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Clinical</td>
+                                    <td><a href="#" class="item-title-link"
+                                            onclick="alert('Viewing public question details is under construction.')">Insourced
+                                            cPM models</a></td>
+                                    <td>John D.</td>
+                                    <td>2026-02-20</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Nonclinical</td>
+                                    <td><a href="#" class="item-title-link"
+                                            onclick="alert('Viewing public question details is under construction.')">Toxicity
+                                            study protocol review</a></td>
+                                    <td>Sam Y.</td>
+                                    <td>2026-02-15</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Footer & Pagination -->
+                    <div class="qna-board-footer">
+                        <div id="pagination-spacer" style="width: 150px;"></div> <!-- Spacer for center alignment -->
+                        <ul class="pagination" id="qna-pagination">
+                            <!-- Pagination will be dynamically populated here -->
+                        </ul>
+                        <button class="btn-register" onclick="showWriteForm()">
+                            <i class="fas fa-pen"></i> Register
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ================= WRITE VIEW ================= -->
+                <div id="qna-write-view">
+                    <h2 class="qna-section-title"><i class="fas fa-edit" style="font-size: 1.6rem;"></i> Register
+                        Question</h2>
+
+                    <div class="write-form-container">
+                        <form id="qnaForm" onsubmit="event.preventDefault(); submitForm();">
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                                <div class="form-group">
+                                    <label class="write-label">Author Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="write-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="write-label">Inquiry Type</label>
+                                <select class="form-control" required style="cursor: pointer; appearance: auto;">
+                                    <option value="" disabled selected>Select category</option>
+                                    <option value="nonclinical">Nonclinical Services</option>
+                                    <option value="clinical">Clinical Services</option>
+                                    <option value="cmc">CMC Services</option>
+                                    <option value="regulatory">Regulatory Affairs</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="write-label">Title</label>
+                                <input type="text" class="form-control" placeholder="Briefly summarize your question"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="write-label">Content</label>
+                                <textarea class="form-control"
+                                    placeholder="Please describe your question or request in detail..."
+                                    style="min-height: 250px; resize: vertical;" required></textarea>
+                            </div>
+
+                            <div
+                                style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;">
+                                <div>
+                                    <label class="write-label">Security Settings</label>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="privatePost" name="privatePost">
+                                        <label for="privatePost" style="cursor: pointer; user-select: none;">Private
+                                            Post (Requires password to view)</label>
+                                    </div>
+                                    <div id="passwordFieldContainer" style="display: none; margin-top: 0.5rem;">
+                                        <input type="password" class="form-control" placeholder="Set a 4-digit password"
+                                            style="max-width: 250px;" maxlength="4">
+                                    </div>
+                                </div>
+
+                                <!-- reCAPTCHA Placeholder -->
+                                <div class="recaptcha-placeholder">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <input type="checkbox"
+                                            style="width: 28px; height: 28px; accent-color: #2da44e; cursor:pointer;"
+                                            required>
+                                        <strong style="color: #333; font-size:1.05rem;">I'm not a robot</strong>
+                                    </div>
+                                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA"
+                                        width="36" height="36">
+                                </div>
+                            </div>
+
+                            <div class="write-actions">
+                                <button type="button" class="btn-cancel" onclick="showBoard()">Cancel</button>
+                                <button type="submit" class="btn-submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy;
+            <script>document.write(new Date().getFullYear())</script> YNK Consulting. All rights reserved.
+        </p>
+        <p
+            style="font-size: 0.8rem; color: #ffffff; margin-top: 0.8rem; opacity: 0.9; font-weight: 300; line-height: 1.6;">
+            대전광역시 유성구 테크노2로 206, 2층 251호(용산동)<br>
+            #251, 2F, 206, Techno 2-ro, Yuseong-gu, Daejeon, Republic of Korea<br>
+            <span style="font-weight: 500;">Email: wskoh@ynk-consulting.co.kr</span>
+        </p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script>
+        // View Toggle Logic
+        function showWriteForm() {
+            document.getElementById('qna-board-view').style.display = 'none';
+            document.getElementById('qna-write-view').style.display = 'block';
+            window.scrollTo({ top: document.querySelector('.qna-wrapper').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        function showBoard() {
+            document.getElementById('qna-write-view').style.display = 'none';
+            document.getElementById('qna-board-view').style.display = 'block';
+            window.scrollTo({ top: document.querySelector('.qna-wrapper').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        // Form Submit
+        function submitForm() {
+            alert('Your question has been successfully submitted and is pending admin approval.');
+            document.getElementById('qnaForm').reset();
+            document.getElementById('passwordFieldContainer').style.display = 'none';
+            showBoard();
+        }
+
+        // Private Post Password Prompt
+        function promptPassword(e) {
+            e.preventDefault();
+            const pwd = prompt("This is a private post. Please enter the password to view:");
+            if (pwd !== null) {
+                if (pwd.trim() === "") {
+                    alert("Password cannot be empty.");
+                } else {
+                    alert("Incorrect password. Access denied.");
+                }
+            }
+        }
+
+        // Toggle Password Field on Checkbox Check
+        document.getElementById('privatePost').addEventListener('change', function () {
+            const pwdContainer = document.getElementById('passwordFieldContainer');
+            if (this.checked) {
+                pwdContainer.style.display = 'block';
+                pwdContainer.querySelector('input').setAttribute('required', 'true');
+            } else {
+                pwdContainer.style.display = 'none';
+                pwdContainer.querySelector('input').removeAttribute('required');
+            }
+        });
+
+        // Dynamic Pagination Display Logic
+        document.addEventListener('DOMContentLoaded', function () {
+            const rowsPerPage = 7;
+            const tableBody = document.querySelector('.qna-table tbody');
+            const allRows = Array.from(tableBody.querySelectorAll('tr'));
+            const rowCount = allRows.length;
+            const totalPages = Math.ceil(rowCount / rowsPerPage);
+            let currentPage = 1;
+
+            const paginationEl = document.getElementById('qna-pagination');
+            const spacerEl = document.getElementById('pagination-spacer');
+            const footerEl = document.querySelector('.qna-board-footer');
+
+            function renderTable(page) {
+                // Hide all rows
+                allRows.forEach(row => row.style.display = 'none');
+
+                // Show rows for the current page
+                const start = (page - 1) * rowsPerPage;
+                const end = start + rowsPerPage;
+                allRows.slice(start, end).forEach(row => row.style.display = '');
+            }
+
+            function renderPagination() {
+                paginationEl.innerHTML = ''; // Clear existing pagination
+
+                // Previous Button
+                const prevLi = document.createElement('li');
+                const prevA = document.createElement('a');
+                prevA.href = '#';
+                prevA.className = 'page-link';
+                prevA.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                prevA.onclick = (e) => {
+                    e.preventDefault();
+                    if (currentPage > 1) {
+                        currentPage--;
+                        updateView();
+                    }
+                };
+                prevLi.appendChild(prevA);
+                paginationEl.appendChild(prevLi);
+
+                // Page Numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = '#';
+                    a.className = `page-link ${i === currentPage ? 'active' : ''}`;
+                    a.innerText = i;
+                    a.onclick = (e) => {
+                        e.preventDefault();
+                        currentPage = i;
+                        updateView();
+                    };
+                    li.appendChild(a);
+                    paginationEl.appendChild(li);
+                }
+
+                // Next Button
+                const nextLi = document.createElement('li');
+                const nextA = document.createElement('a');
+                nextA.href = '#';
+                nextA.className = 'page-link';
+                nextA.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextA.onclick = (e) => {
+                    e.preventDefault();
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        updateView();
+                    }
+                };
+                nextLi.appendChild(nextA);
+                paginationEl.appendChild(nextLi);
+            }
+
+            function updateView() {
+                renderTable(currentPage);
+                renderPagination();
+            }
+
+            // Layout & Visibility Toggle based on rowsPerPage
+            if (rowCount <= rowsPerPage) {
+                if (paginationEl) paginationEl.style.display = 'none';
+                if (spacerEl) spacerEl.style.display = 'none';
+                if (footerEl) footerEl.style.justifyContent = 'flex-end';
+
+                // Ensure all rows are visible if we don't paginate
+                allRows.forEach(row => row.style.display = '');
+            } else {
+                if (paginationEl) paginationEl.style.display = 'flex';
+                if (spacerEl) spacerEl.style.display = 'block';
+                if (footerEl) footerEl.style.justifyContent = 'space-between';
+
+                updateView(); // Render table and pagination dots
+            }
+        });
+    </script>
+</body>
+
+</html>

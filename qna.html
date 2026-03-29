@@ -350,65 +350,6 @@
             .btn-submit {
                 width: 100%;
             }
-
-            /* Responsive Table -> Card View */
-            .qna-table thead {
-                display: none;
-            }
-
-            .qna-table,
-            .qna-table tbody,
-            .qna-table tr,
-            .qna-table td {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .qna-table tr {
-                margin-bottom: 1.5rem;
-                border: 1px solid #e2e8f0;
-                border-radius: 8px;
-                padding: 1rem;
-                background-color: var(--white);
-                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            }
-
-            .qna-table td {
-                text-align: right;
-                padding: 0.8rem 0;
-                border-bottom: 1px dashed #e2e8f0;
-                position: relative;
-                padding-left: 35%;
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-            }
-
-            .qna-table td:last-child {
-                border-bottom: none;
-                padding-bottom: 0;
-            }
-
-            .qna-table td:first-child {
-                padding-top: 0;
-            }
-
-            .qna-table td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 0;
-                width: 30%;
-                font-weight: 600;
-                text-align: left;
-                color: var(--navy-brand);
-            }
-
-            .item-title-link {
-                justify-content: flex-end;
-                text-align: right;
-                word-break: keep-all; 
-            }
         }
     </style>
 </head>
@@ -471,122 +412,122 @@
                             <tbody>
                                 <!-- Item 1: Answered (Public) -->
                                 <tr>
-                                    <td data-label="No">10</td>
-                                    <td data-label="Type">Clinical</td>
-                                    <td data-label="Title">
+                                    <td>10</td>
+                                    <td>Clinical</td>
+                                    <td>
                                         <a href="#" class="item-title-link"
                                             onclick="alert('Viewing public question details is under construction.')">
                                             Inquiry about Clinical Strategy Consulting Timeline
                                         </a>
                                     </td>
-                                    <td data-label="Author">Emily R.</td>
-                                    <td data-label="Date">2026-03-15</td>
-                                    <td data-label="Status"><span class="status-badge badge-answered">Answered</span></td>
+                                    <td>Emily R.</td>
+                                    <td>2026-03-15</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
                                 </tr>
 
                                 <!-- Item 2: Waiting (Private) -->
                                 <tr>
-                                    <td data-label="No">9</td>
-                                    <td data-label="Type">CMC</td>
-                                    <td data-label="Title">
+                                    <td>9</td>
+                                    <td>CMC</td>
+                                    <td>
                                         <a href="#" class="item-title-link" onclick="promptPassword(event)">
                                             Requesting details on formulation development <i
                                                 class="fas fa-lock icon-lock"></i>
                                         </a>
                                     </td>
-                                    <td data-label="Author">J. Smith</td>
-                                    <td data-label="Date">2026-03-14</td>
-                                    <td data-label="Status"><span class="status-badge badge-waiting">Waiting</span></td>
+                                    <td>J. Smith</td>
+                                    <td>2026-03-14</td>
+                                    <td><span class="status-badge badge-waiting">Waiting</span></td>
                                 </tr>
 
                                 <!-- Item 3: Answered (Private) -->
                                 <tr>
-                                    <td data-label="No">8</td>
-                                    <td data-label="Type">Nonclinical</td>
-                                    <td data-label="Title">
+                                    <td>8</td>
+                                    <td>Nonclinical</td>
+                                    <td>
                                         <a href="#" class="item-title-link" onclick="promptPassword(event)">
                                             PK simulation and dose level justification service <i
                                                 class="fas fa-lock icon-lock"></i>
                                         </a>
                                     </td>
-                                    <td data-label="Author">M*** P.</td>
-                                    <td data-label="Date">2026-03-12</td>
-                                    <td data-label="Status"><span class="status-badge badge-answered">Answered</span></td>
+                                    <td>M*** P.</td>
+                                    <td>2026-03-12</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
                                 </tr>
 
                                 <!-- Item 4: Waiting (Public) -->
                                 <tr>
-                                    <td data-label="No">7</td>
-                                    <td data-label="Type">Regulatory</td>
-                                    <td data-label="Title">
+                                    <td>7</td>
+                                    <td>Regulatory</td>
+                                    <td>
                                         <a href="#" class="item-title-link"
                                             onclick="alert('Viewing public question details is under construction.')">
                                             IND Submission Requirements
                                         </a>
                                     </td>
-                                    <td data-label="Author">David K.</td>
-                                    <td data-label="Date">2026-03-10</td>
-                                    <td data-label="Status"><span class="status-badge badge-waiting">Waiting</span></td>
+                                    <td>David K.</td>
+                                    <td>2026-03-10</td>
+                                    <td><span class="status-badge badge-waiting">Waiting</span></td>
                                 </tr>
 
                                 <!-- Mock Items for Pagination Testing -->
                                 <tr>
-                                    <td data-label="No">6</td>
-                                    <td data-label="Type">Clinical</td>
-                                    <td data-label="Title"><a href="#" class="item-title-link"
+                                    <td>6</td>
+                                    <td>Clinical</td>
+                                    <td><a href="#" class="item-title-link"
                                             onclick="alert('Viewing public question details is under construction.')">CRO
                                             Selection Criteria</a></td>
-                                    <td data-label="Author">Alice B.</td>
-                                    <td data-label="Date">2026-03-08</td>
-                                    <td data-label="Status"><span class="status-badge badge-answered">Answered</span></td>
+                                    <td>Alice B.</td>
+                                    <td>2026-03-08</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
                                 </tr>
                                 <tr>
-                                    <td data-label="No">5</td>
-                                    <td data-label="Type">CMC</td>
-                                    <td data-label="Title"><a href="#" class="item-title-link" onclick="promptPassword(event)">Cell Line
+                                    <td>5</td>
+                                    <td>CMC</td>
+                                    <td><a href="#" class="item-title-link" onclick="promptPassword(event)">Cell Line
                                             Establishment <i class="fas fa-lock icon-lock"></i></a></td>
-                                    <td data-label="Author">P*** T.</td>
-                                    <td data-label="Date">2026-03-05</td>
-                                    <td data-label="Status"><span class="status-badge badge-answered">Answered</span></td>
+                                    <td>P*** T.</td>
+                                    <td>2026-03-05</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
                                 </tr>
                                 <tr>
-                                    <td data-label="No">4</td>
-                                    <td data-label="Type">Other</td>
-                                    <td data-label="Title"><a href="#" class="item-title-link"
+                                    <td>4</td>
+                                    <td>Other</td>
+                                    <td><a href="#" class="item-title-link"
                                             onclick="alert('Viewing public question details is under construction.')">General
                                             capability inquiry</a></td>
-                                    <td data-label="Author">Kim S.</td>
-                                    <td data-label="Date">2026-03-01</td>
-                                    <td data-label="Status"><span class="status-badge badge-answered">Answered</span></td>
+                                    <td>Kim S.</td>
+                                    <td>2026-03-01</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
                                 </tr>
                                 <tr>
-                                    <td data-label="No">3</td>
-                                    <td data-label="Type">Regulatory</td>
-                                    <td data-label="Title"><a href="#" class="item-title-link" onclick="promptPassword(event)">Gap Analysis
+                                    <td>3</td>
+                                    <td>Regulatory</td>
+                                    <td><a href="#" class="item-title-link" onclick="promptPassword(event)">Gap Analysis
                                             Timeline <i class="fas fa-lock icon-lock"></i></a></td>
-                                    <td data-label="Author">L*** K.</td>
-                                    <td data-label="Date">2026-02-25</td>
-                                    <td data-label="Status"><span class="status-badge badge-answered">Answered</span></td>
+                                    <td>L*** K.</td>
+                                    <td>2026-02-25</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
                                 </tr>
                                 <tr>
-                                    <td data-label="No">2</td>
-                                    <td data-label="Type">Clinical</td>
-                                    <td data-label="Title"><a href="#" class="item-title-link"
+                                    <td>2</td>
+                                    <td>Clinical</td>
+                                    <td><a href="#" class="item-title-link"
                                             onclick="alert('Viewing public question details is under construction.')">Insourced
                                             cPM models</a></td>
-                                    <td data-label="Author">John D.</td>
-                                    <td data-label="Date">2026-02-20</td>
-                                    <td data-label="Status"><span class="status-badge badge-answered">Answered</span></td>
+                                    <td>John D.</td>
+                                    <td>2026-02-20</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
                                 </tr>
                                 <tr>
-                                    <td data-label="No">1</td>
-                                    <td data-label="Type">Nonclinical</td>
-                                    <td data-label="Title"><a href="#" class="item-title-link"
+                                    <td>1</td>
+                                    <td>Nonclinical</td>
+                                    <td><a href="#" class="item-title-link"
                                             onclick="alert('Viewing public question details is under construction.')">Toxicity
                                             study protocol review</a></td>
-                                    <td data-label="Author">Sam Y.</td>
-                                    <td data-label="Date">2026-02-15</td>
-                                    <td data-label="Status"><span class="status-badge badge-answered">Answered</span></td>
+                                    <td>Sam Y.</td>
+                                    <td>2026-02-15</td>
+                                    <td><span class="status-badge badge-answered">Answered</span></td>
                                 </tr>
                             </tbody>
                         </table>

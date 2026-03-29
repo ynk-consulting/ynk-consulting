@@ -72,23 +72,4 @@ document.addEventListener('DOMContentLoaded', () => {
             offset: 100
         });
     }
-
-    // Handle cross-page hash navigation accurately after layout and AOS settle
-    window.addEventListener('load', () => {
-        if (window.location.hash) {
-            const target = document.querySelector(window.location.hash);
-            if (target) {
-                setTimeout(() => {
-                    const headerOffset = 70;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }, 150); // slight delay to ensure AOS transforms are applied
-            }
-        }
-    });
 });

@@ -72,4 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
             offset: 100
         });
     }
+
+    // Fix for hash links jumping behind header due to AOS fade-up animations
+    window.addEventListener('load', () => {
+        if (window.location.hash) {
+            // Wait briefly for AOS and browser layout to settle natively
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    let topOffset = 0;
+                    let elem = target;
+                    while (elem) {
+                        topOffset += elem.offsetTop;
+                        elem = elem.offsetParent;
+                    }
+                    const headerOffset = 100;
+                    window.scrollTo({
+                        top: topOffset - headerOffset,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        }
+    });
 });

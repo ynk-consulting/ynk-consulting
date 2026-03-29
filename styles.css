@@ -170,6 +170,13 @@ header {
     opacity: 0.9;
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
 .btn {
     display: inline-block;
     padding: 1rem 2.5rem;
@@ -478,9 +485,23 @@ footer p {
         padding: 0.8rem 2rem;
     }
 
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
     .stats,
     .services,
-    .contact {
+    .contact,
+    .services-details,
+    .services-summary-section {
         padding: 4rem 1.5rem;
     }
 

@@ -73,6 +73,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Contact Form Submission via EmailJS
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('submitMsg') || document.getElementById('form-status');
+
+    if (contactForm && typeof emailjs !== 'undefined') {
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent standard page reload
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+
+            // UI Feedback: Sending state
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+            if (formStatus) formStatus.style.display = 'none';
+
+            // Send actual email using EmailJS
+            // Replace 'YOUR_TEMPLATE_ID' with your actual EmailJS IDs
+            emailjs.sendForm('service_shkoh831', 'template_7bx5nlq', this)
+                .then(() => {
+                    // Success UI Feedback
+                    submitBtn.innerText = 'Sent Successfully!';
+                    submitBtn.style.backgroundColor = '#28a745';
+                    if (formStatus) {
+                        formStatus.textContent = 'Thank you! Your message has been sent.';
+                        formStatus.style.color = '#28a745';
+                        formStatus.style.display = 'block';
+                    }
+                    contactForm.reset(); // Clear inputs
+
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.style.backgroundColor = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }, (error) => {
+                    // Error UI Feedback
+                    console.log('FAILED...', error);
+                    submitBtn.innerText = 'Failed to Send';
+                    submitBtn.style.backgroundColor = '#dc3545';
+                    submitBtn.disabled = false;
+
+                    if (formStatus) {
+                        formStatus.textContent = 'Failed to send message. Please check EmailJS configuration.';
+                        formStatus.style.color = '#dc3545';
+                        formStatus.style.display = 'block';
+                    }
+
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.style.backgroundColor = '';
+                    }, 3000);
+                });
+        });
+    }
+
     // Fix for hash links jumping behind header due to AOS fade-up animations
     window.addEventListener('load', () => {
         if (window.location.hash) {

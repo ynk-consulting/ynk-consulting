@@ -57,28 +57,29 @@
 
                 <!-- Main Content (Form) -->
                 <div class="contact-form">
-                    <form id="contactForm"
-                        onsubmit="event.preventDefault(); window.location.href='mailto:wskoh@ynk-consulting.co.kr';">
+                    <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Name"
+                            <input type="text" class="form-control" name="user_name" placeholder="Name"
                                 style="border: 1px solid #cbd5e0;" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email"
+                            <input type="email" class="form-control" name="user_email" placeholder="Email"
                                 style="border: 1px solid #cbd5e0;" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Company / Affiliation (Optional)"
-                                style="border: 1px solid #cbd5e0;">
+                            <input type="text" class="form-control" name="user_company"
+                                placeholder="Company / Affiliation (Optional)" style="border: 1px solid #cbd5e0;">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control"
+                            <textarea class="form-control" name="message"
                                 placeholder="Please describe your inquiry or project details (e.g., goals, timeline, etc.)"
                                 style="border: 1px solid #cbd5e0; min-height: 150px;" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-navy"
                             style="width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: 8px;">Send
                             Message</button>
+                        <p id="form-status"
+                            style="margin-top: 1rem; text-align: center; font-weight: 500; display: none;"></p>
                     </form>
                 </div>
 
@@ -98,6 +99,15 @@
             <span style="font-weight: 500;">Email: wskoh@ynk-consulting.co.kr</span>
         </p>
     </footer>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/emailjs.min.js"></script>
+    <script type="text/javascript">
+            (function () {
+                // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key.
+                emailjs.init("cjezxFS8ITQpgX_9g");
+            })();
+    </script>
 
     <!-- Custom JS -->
     <script src="script.js"></script>

@@ -623,7 +623,7 @@ footer p {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    scroll-margin-top: 230px;
+    scroll-margin-top: 100px;
 }
 
 .detail-item {

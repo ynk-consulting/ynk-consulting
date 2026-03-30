@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                const headerOffset = 70;
+                const headerOffset = 150;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         topOffset += elem.offsetTop;
                         elem = elem.offsetParent;
                     }
-                    const headerOffset = 100;
+                    const headerOffset = 150;
                     window.scrollTo({
                         top: topOffset - headerOffset,
                         behavior: 'smooth'

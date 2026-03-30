@@ -101,11 +101,13 @@
     </footer>
 
     <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/emailjs.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
             (function () {
                 // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key.
-                emailjs.init("cjezxFS8ITQpgX_9g");
+                emailjs.init({
+                    publicKey: "cjezxFS8ITQpgX_9g",
+                });
             })();
     </script>
 

@@ -77,25 +77,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('submitMsg') || document.getElementById('form-status');
 
-    if (contactForm && typeof emailjs !== 'undefined') {
+    if (contactForm) {
+        console.log('Contact form detected, attaching listener...');
         contactForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent standard page reload
+            // ALWAYS prevent default first to stop page reload
+            event.preventDefault(); 
+            console.log('Form submission intercepted.');
+
+            if (typeof emailjs === 'undefined') {
+                const errMsg = 'Email service (EmailJS) is not loaded. Please check your internet connection or ad-blocker.';
+                console.error(errMsg);
+                if (formStatus) {
+                    formStatus.textContent = errMsg;
+                    formStatus.style.color = '#dc3545';
+                    formStatus.style.display = 'block';
+                } else {
+                    alert(errMsg);
+                }
+                return;
+            }
 
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerText;
+            const originalBtnText = submitBtn ? submitBtn.innerText : 'Submit';
 
             // UI Feedback: Sending state
-            submitBtn.innerText = 'Sending...';
-            submitBtn.disabled = true;
-            if (formStatus) formStatus.style.display = 'none';
+            if (submitBtn) {
+                submitBtn.innerText = 'Sending...';
+                submitBtn.disabled = true;
+            }
+            if (formStatus) {
+                formStatus.style.display = 'none';
+                formStatus.textContent = '';
+            }
 
             // Send actual email using EmailJS
-            // Replace 'YOUR_TEMPLATE_ID' with your actual EmailJS IDs
             emailjs.sendForm('service_shkoh831', 'template_7bx5nlq', this)
                 .then(() => {
-                    // Success UI Feedback
-                    submitBtn.innerText = 'Sent Successfully!';
-                    submitBtn.style.backgroundColor = '#28a745';
+                    console.log('SUCCESS!');
+                    if (submitBtn) {
+                        submitBtn.innerText = 'Sent Successfully!';
+                        submitBtn.style.backgroundColor = '#28a745';
+                    }
                     if (formStatus) {
                         formStatus.textContent = 'Thank you! Your message has been sent.';
                         formStatus.style.color = '#28a745';
@@ -105,27 +127,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Reset button after 3 seconds
                     setTimeout(() => {
-                        submitBtn.innerText = originalBtnText;
-                        submitBtn.style.backgroundColor = '';
-                        submitBtn.disabled = false;
+                        if (submitBtn) {
+                            submitBtn.innerText = originalBtnText;
+                            submitBtn.style.backgroundColor = '';
+                            submitBtn.disabled = false;
+                        }
                     }, 3000);
                 }, (error) => {
-                    // Error UI Feedback
-                    console.log('FAILED...', error);
-                    submitBtn.innerText = 'Failed to Send';
-                    submitBtn.style.backgroundColor = '#dc3545';
-                    submitBtn.disabled = false;
+                    console.error('FAILED...', error);
+                    if (submitBtn) {
+                        submitBtn.innerText = 'Failed to Send';
+                        submitBtn.style.backgroundColor = '#dc3545';
+                        submitBtn.disabled = false;
+                    }
 
                     if (formStatus) {
-                        formStatus.textContent = 'Failed to send message. Please check EmailJS configuration.';
+                        formStatus.textContent = 'Failed to send message: ' + (error.text || 'Unknown error');
                         formStatus.style.color = '#dc3545';
                         formStatus.style.display = 'block';
                     }
 
                     // Reset button after 3 seconds
                     setTimeout(() => {
-                        submitBtn.innerText = originalBtnText;
-                        submitBtn.style.backgroundColor = '';
+                        if (submitBtn) {
+                            submitBtn.innerText = originalBtnText;
+                            submitBtn.style.backgroundColor = '';
+                        }
                     }, 3000);
                 });
         });

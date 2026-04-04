@@ -526,154 +526,52 @@
             #251, 2F, 206, Techno 2-ro, Yuseong-gu, Daejeon, Republic of Korea<br>
             <span style="font-weight: 500;">Email: wskoh@ynk-consulting.co.kr</span>
         </p>
+        <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+            <a href="admin.html" target="_blank" style="color: #cbd5e0; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#cbd5e0'"><i class="fas fa-lock"></i> Q&A Admin</a>
+        </div>
     </footer>
 
     <!-- Custom JS -->
     <script src="script.js"></script>
-    <script>
-        // View Toggle Logic
-        function showWriteForm() {
-            document.getElementById('qna-board-view').style.display = 'none';
-            document.getElementById('qna-write-view').style.display = 'block';
-            window.scrollTo({ top: document.querySelector('.qna-wrapper').offsetTop - 100, behavior: 'smooth' });
-        }
+    <div id="qna-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; z-index: 1000;">
+        <div
+            style="background: white; padding: 2.5rem; border-radius: 8px; max-width: 650px; width: 90%; max-height: 90vh; overflow-y: auto;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #002366; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                <h2 id="modal-title" style="margin: 0; color: #002366; font-size: 1.4rem; font-weight: 700;">Question
+                    Title</h2>
+                <button onclick="document.getElementById('qna-modal').style.display='none'"
+                    style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #a0aec0; margin-top: -5px;">&times;</button>
+            </div>
 
-        function showBoard() {
-            document.getElementById('qna-write-view').style.display = 'none';
-            document.getElementById('qna-board-view').style.display = 'block';
-            window.scrollTo({ top: document.querySelector('.qna-wrapper').offsetTop - 100, behavior: 'smooth' });
-        }
+            <div style="margin-bottom: 2rem; color: #4a5568;">
+                <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                    <div><strong>Author:</strong> <span id="modal-author">...</span></div>
+                    <div><strong>Date:</strong> <span id="modal-date">...</span></div>
+                </div>
+                <div style="margin-top: 1.5rem; line-height: 1.6; white-space: pre-wrap;" id="modal-content">
+                    ...
+                </div>
+            </div>
 
-        // Form Submit
-        function submitForm() {
-            alert('Your question has been successfully submitted and is pending admin approval.');
-            document.getElementById('qnaForm').reset();
-            document.getElementById('passwordFieldContainer').style.display = 'none';
-            showBoard();
-        }
+            <div id="modal-answer-section"
+                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 1.5rem; display: none;">
+                <h3
+                    style="margin-top: 0; margin-bottom: 1rem; color: #2B59C3; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-reply"></i> Admin Answer</h3>
+                <div id="modal-answer-content" style="white-space: pre-wrap; line-height: 1.6; color: #2d3748;">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Private Post Password Prompt
-        function promptPassword(e) {
-            e.preventDefault();
-            const pwd = prompt("This is a private post. Please enter the password to view:");
-            if (pwd !== null) {
-                if (pwd.trim() === "") {
-                    alert("Password cannot be empty.");
-                } else {
-                    alert("Incorrect password. Access denied.");
-                }
-            }
-        }
-
-        // Toggle Password Field on Checkbox Check
-        document.getElementById('privatePost').addEventListener('change', function () {
-            const pwdContainer = document.getElementById('passwordFieldContainer');
-            if (this.checked) {
-                pwdContainer.style.display = 'block';
-                pwdContainer.querySelector('input').setAttribute('required', 'true');
-            } else {
-                pwdContainer.style.display = 'none';
-                pwdContainer.querySelector('input').removeAttribute('required');
-            }
-        });
-
-        // Dynamic Pagination Display Logic
-        document.addEventListener('DOMContentLoaded', function () {
-            const rowsPerPage = 7;
-            const tableBody = document.querySelector('.qna-table tbody');
-            const allRows = Array.from(tableBody.querySelectorAll('tr'));
-            const rowCount = allRows.length;
-            const totalPages = Math.ceil(rowCount / rowsPerPage);
-            let currentPage = 1;
-
-            const paginationEl = document.getElementById('qna-pagination');
-            const spacerEl = document.getElementById('pagination-spacer');
-            const footerEl = document.querySelector('.qna-board-footer');
-
-            function renderTable(page) {
-                // Hide all rows
-                allRows.forEach(row => row.style.display = 'none');
-
-                // Show rows for the current page
-                const start = (page - 1) * rowsPerPage;
-                const end = start + rowsPerPage;
-                allRows.slice(start, end).forEach(row => row.style.display = '');
-            }
-
-            function renderPagination() {
-                paginationEl.innerHTML = ''; // Clear existing pagination
-
-                // Previous Button
-                const prevLi = document.createElement('li');
-                const prevA = document.createElement('a');
-                prevA.href = '#';
-                prevA.className = 'page-link';
-                prevA.innerHTML = '<i class="fas fa-chevron-left"></i>';
-                prevA.onclick = (e) => {
-                    e.preventDefault();
-                    if (currentPage > 1) {
-                        currentPage--;
-                        updateView();
-                    }
-                };
-                prevLi.appendChild(prevA);
-                paginationEl.appendChild(prevLi);
-
-                // Page Numbers
-                for (let i = 1; i <= totalPages; i++) {
-                    const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.href = '#';
-                    a.className = `page-link ${i === currentPage ? 'active' : ''}`;
-                    a.innerText = i;
-                    a.onclick = (e) => {
-                        e.preventDefault();
-                        currentPage = i;
-                        updateView();
-                    };
-                    li.appendChild(a);
-                    paginationEl.appendChild(li);
-                }
-
-                // Next Button
-                const nextLi = document.createElement('li');
-                const nextA = document.createElement('a');
-                nextA.href = '#';
-                nextA.className = 'page-link';
-                nextA.innerHTML = '<i class="fas fa-chevron-right"></i>';
-                nextA.onclick = (e) => {
-                    e.preventDefault();
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        updateView();
-                    }
-                };
-                nextLi.appendChild(nextA);
-                paginationEl.appendChild(nextLi);
-            }
-
-            function updateView() {
-                renderTable(currentPage);
-                renderPagination();
-            }
-
-            // Layout & Visibility Toggle based on rowsPerPage
-            if (rowCount <= rowsPerPage) {
-                if (paginationEl) paginationEl.style.display = 'none';
-                if (spacerEl) spacerEl.style.display = 'none';
-                if (footerEl) footerEl.style.justifyContent = 'flex-end';
-
-                // Ensure all rows are visible if we don't paginate
-                allRows.forEach(row => row.style.display = '');
-            } else {
-                if (paginationEl) paginationEl.style.display = 'flex';
-                if (spacerEl) spacerEl.style.display = 'block';
-                if (footerEl) footerEl.style.justifyContent = 'space-between';
-
-                updateView(); // Render table and pagination dots
-            }
-        });
-    </script>
+    <!-- Firebase SDK Scripts (Compat for file:// access) -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics-compat.js"></script>
+    <script src="qna.js"></script>
 </body>
 
 </html>

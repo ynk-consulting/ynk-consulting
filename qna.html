@@ -526,9 +526,16 @@
             #251, 2F, 206, Techno 2-ro, Yuseong-gu, Daejeon, Republic of Korea<br>
             <span style="font-weight: 500;">Email: wskoh@ynk-consulting.co.kr</span>
         </p>
-        <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-            <a href="admin.html" target="_blank" style="color: #cbd5e0; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#cbd5e0'"><i class="fas fa-lock"></i> Q&A Admin</a>
-            <a href="http://desk.w.ynk-consulting.co.kr" target="_blank" style="color: #cbd5e0; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#cbd5e0'"><i class="fas fa-envelope"></i> Webmail 로그인</a>
+        <div
+            style="margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+            <a href="admin.html" target="_blank"
+                style="color: #cbd5e0; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s;"
+                onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#cbd5e0'"><i
+                    class="fas fa-lock"></i> Q&A Admin</a>
+            <a href="http://desk.w.ynk-consulting.co.kr" target="_blank"
+                style="color: #cbd5e0; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s;"
+                onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#cbd5e0'"><i
+                    class="fas fa-envelope"></i> Webmail 로그인</a>
         </div>
     </footer>
 
@@ -560,7 +567,8 @@
                 style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 1.5rem; display: none;">
                 <h3
                     style="margin-top: 0; margin-bottom: 1rem; color: #2B59C3; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fas fa-reply"></i> Admin Answer</h3>
+                    <i class="fas fa-reply"></i> Admin Answer
+                </h3>
                 <div id="modal-answer-content" style="white-space: pre-wrap; line-height: 1.6; color: #2d3748;">
                     ...
                 </div>
@@ -573,6 +581,10 @@
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics-compat.js"></script>
     <script src="qna.js"></script>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </body>
 
 </html>

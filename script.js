@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Contact form detected, attaching listener...');
         contactForm.addEventListener('submit', function (event) {
             // ALWAYS prevent default first to stop page reload
-            event.preventDefault(); 
+            event.preventDefault();
             console.log('Form submission intercepted.');
 
             if (typeof emailjs === 'undefined') {
@@ -180,4 +180,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
     });
+
+    // Scroll to Top functionality
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
